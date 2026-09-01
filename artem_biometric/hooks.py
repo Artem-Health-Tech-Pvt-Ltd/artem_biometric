@@ -5,6 +5,7 @@ app_description = "Artem Biometric Attendance Sync — Frappe HR"
 app_email = "support@artemhealthtech.com"
 app_license = "mit"
 
+
 # Apps
 # ------------------
 
