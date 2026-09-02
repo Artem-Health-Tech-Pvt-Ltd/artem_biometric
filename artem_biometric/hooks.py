@@ -150,23 +150,30 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"artem_biometric.tasks.all"
-# 	],
-# 	"daily": [
-# 		"artem_biometric.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"artem_biometric.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"artem_biometric.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"artem_biometric.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+    
+    "cron": {
+        "*/5 * * * *": [
+            "artem_biometric.api.biometric.sync_biometric_attendance"
+        ]
+    }
+    
+	# "all": [
+	# 	"artem_biometric.tasks.all"
+	# ],
+	# "daily": [
+	# 	"artem_biometric.tasks.daily"
+	# ],
+	# "hourly": [
+	# 	"artem_biometric.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"artem_biometric.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"artem_biometric.tasks.monthly"
+	# ],
+}
 
 # Testing
 # -------
