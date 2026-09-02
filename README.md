@@ -1,5 +1,5 @@
-# For Qa site git branch = release/qa
-# For Live site git branch = release/live
+### For Qa site git branch = release/qa
+### For Live site git branch = release/live
 
 ### Artem Biometric Configration
 
