@@ -181,7 +181,7 @@ def process_biometric_record(connection, record, error_collector=None):
 			frappe.logger().info(
 				f"Duplicate Employee Checkin found for "
 				f"{employee.name} at {punch_time}. "
-				f"Marking biometric record as processed."
+				f"Skipping insertion."
 			)
 
 			if error_collector is not None:
@@ -194,7 +194,7 @@ def process_biometric_record(connection, record, error_collector=None):
 					"note": f"Checkin already exists for {employee.name} at {punch_time}",
 				})
 
-			return True, "Duplicate Employee Checkin"
+			return False, "Duplicate Employee Checkin"
 
 		# Create Employee Checkin
 		checkin = create_employee_checkin(
