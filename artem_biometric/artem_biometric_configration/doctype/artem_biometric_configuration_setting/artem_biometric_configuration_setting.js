@@ -4,9 +4,9 @@
 
 // Date: 01-09-2026
 // Author: Anjali Patoliya
-// Description: This file contains the client-side script for the "Artem Biometric Configration Setting" doctype. It defines a function to fetch employee punch data based on the selected date range and displays the results in a message dialog.
+// Description: This file contains the client-side script for the "Artem Biometric Configuration Setting" doctype. It defines a function to fetch employee punch data based on the selected date range and displays the results in a message dialog.
 
-frappe.ui.form.on("Artem Biometric Configration Setting", {
+frappe.ui.form.on("Artem Biometric Configuration Setting", {
 	fetch_employee_punch_data(frm) {
 		if (!frm.doc.from_date) {
 			frappe.msgprint(__("Please select From Date."));
@@ -26,7 +26,7 @@ frappe.ui.form.on("Artem Biometric Configration Setting", {
 		const fetch_punch_data = () => {
 			frappe.call({
 				method:
-					"artem_biometric.artem_biometric_configration.doctype.artem_biometric_configration_setting.artem_biometric_configration_setting.fetch_employee_punch_data",
+					"artem_biometric.artem_biometric_configration.doctype.artem_biometric_configuration_setting.artem_biometric_configuration_setting.fetch_employee_punch_data",
 
 				args: {
 					from_date: frm.doc.from_date,
@@ -40,15 +40,21 @@ frappe.ui.form.on("Artem Biometric Configration Setting", {
 					if (r.message?.success) {
 						frm.reload_doc();
 
-						frappe.msgprint(
-							__(
-								"Created Employee Checkins: {0}<br>Failed to Create Employee Checkins: {1}",
-								[
-									r.message.processed,
-									r.message.failed,
-								]
-							)
-						);
+						if (r.message.already_exist) {
+							frappe.msgprint(
+								__(r.message.message || "Already exist employees punch in employee checkin for select date")
+							);
+						} else {
+							frappe.msgprint(
+								__(
+									"Created Employee Checkins: {0}<br>Failed to Create Employee Checkins: {1}",
+									[
+										r.message.processed,
+										r.message.failed,
+									]
+								)
+							);
+						}
 					}
 				},
 			});
