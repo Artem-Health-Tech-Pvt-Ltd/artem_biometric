@@ -10,7 +10,6 @@ import pymysql
 from frappe import _
 
 
-SETTINGS_DOCTYPE = "Artem Biometric Configration Setting"
 SETTINGS_DOCTYPE = "Artem Biometric Configuration Setting"
 SOURCE_TABLE = "att_data"
 
