@@ -13,9 +13,9 @@ IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
 
 
-class IntegrationTestArtemBiometricConfigrationSetting(IntegrationTestCase):
+class IntegrationTestArtemBiometricConfigurationSetting(IntegrationTestCase):
 	"""
-	Integration tests for ArtemBiometricConfigrationSetting.
+	Integration tests for ArtemBiometricConfigurationSetting.
 	Use this class for testing interactions between multiple components.
 	"""
 

@@ -10,7 +10,7 @@ import pymysql
 from frappe import _
 
 
-SETTINGS_DOCTYPE = "Artem Biometric Configration Setting"
+SETTINGS_DOCTYPE = "Artem Biometric Configuration Setting"
 SOURCE_TABLE = "att_data"
 
 
@@ -360,6 +360,8 @@ def sync_device(device, connection=None, error_collector=None):
                 )
 
                 if not success:
+                    if _err_type == "Duplicate Employee Checkin":
+                        mark_record_synced(connection, record)
                     failed += 1
                     continue
 
